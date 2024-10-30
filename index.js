@@ -1,28 +1,23 @@
+// backend/index.js
 const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const database = require('./Config/Database');
-
+const cors = require('cors');
+const connectDB = require('./Config/db');
 
 dotenv.config();
-
+connectDB();
 
 const app = express();
+
+// Middleware
 app.use(cors());
-app.use(bodyParser.json({limit: '30mb', extended: true}));
-app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
+app.use(express.json());
+
+// Routes
+app.use('/api/auth', require('./Routes/Auth'));
+app.use('/api/problem', require('./Routes/Problem'));
 
 
-const PORT= 4000;
-
-app.get('/', (req, res) => {
-    req.send('Welcome to the server');
-});
-
-
-database();
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-})
+// Sunucuyu dinlemeye başla
+const PORT = process.env.PORT || 6105;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
