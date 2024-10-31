@@ -25,3 +25,39 @@ exports.addProblem = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+exports.getProblem = async (req, res) => {
+    try {
+        const problems =await Problem.find();
+        res.status(200).json(problems)
+        
+    } catch (error) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+        
+    }
+}
+exports.updateProblem = async (req, res) => {
+    try {
+        const problems =await Problem.find();
+        res.status(200).json(problems)
+        
+    } catch (error) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+        
+    }
+}
+
+exports.deleteProblem = async (req, res) => {
+    try {
+        const problems =await Problem.find();
+        res.status(200).json(problems)
+        
+    } catch (error) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+        
+    }
+}
+
