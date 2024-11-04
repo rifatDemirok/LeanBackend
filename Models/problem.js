@@ -5,11 +5,13 @@ const bcrypt = require('bcryptjs');
 const problemSchema = new mongoose.Schema({
     id: {
         type: Number,
-       required: false,},
+       required: false,
+       unique: true,
+    
+    },
     title: {
         type: String,
         required: true,
-        unique: true,
     },
     description: {
         type: String,
