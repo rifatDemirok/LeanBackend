@@ -16,7 +16,8 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', require('./Routes/Auth'));
 app.use('/api/problem', require('./Routes/Problem'));
-
+app.use('/api/kanban', require('./Routes/Kanban'));
+app.use('machine',require('./Routes/Machine'));
 
 // Sunucuyu dinlemeye başla
 const PORT = process.env.PORT || 6105;
